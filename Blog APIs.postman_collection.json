@@ -1,0 +1,390 @@
+{
+	"info": {
+		"_postman_id": "221c2355-b091-46a8-a289-867e22ffb2ce",
+		"name": "Blog APIs",
+		"description": "Blog APIs using Django",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Rajan\",\r\n    \"last_name\": \"Kumar\",\r\n    \"email\": \"rajan@example.com\",\r\n    \"password\": \"Blog@1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"register"
+					]
+				},
+				"description": "API to create a new User. No auth is required."
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"rajan@example.com\",\r\n    \"password\": \"Blog@1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "User login API. No auth is required."
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 617680dab5adbee6a9a78e267332925c8f1db240",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"coupon_code\": \"INT1110201000\",\r\n    \"coupon_pin\": \"201\",\r\n    \"is_scanned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"logout"
+					]
+				},
+				"description": "User logout API.\r\n\r\nAuthorization header is required: Token <token>"
+			},
+			"response": []
+		},
+		{
+			"name": "List Blog Posts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 763cb731c03689d34fdd5dfe8ed9bfce0d90921e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"posts"
+					]
+				},
+				"description": "List all blog posts.\r\n\r\nAuthorization header is required: Token <token>"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Blog Posts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 763cb731c03689d34fdd5dfe8ed9bfce0d90921e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\": 2,\r\n    \"title\": \"This is my new blog\",\r\n    \"content\": \"the series of letters and figures identifying a motor vehicle, assigned on registration and displayed on a number plate.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"posts"
+					]
+				},
+				"description": "Create new blog post.\r\n\r\nAuthorization header is required: Token <token>"
+			},
+			"response": []
+		},
+		{
+			"name": "List Post Categories",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 763cb731c03689d34fdd5dfe8ed9bfce0d90921e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"categories"
+					]
+				},
+				"description": "List all post categories.\r\n\r\nAuthorization header is required: Token <token>"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post Categories",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 763cb731c03689d34fdd5dfe8ed9bfce0d90921e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"NewCat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"categories"
+					]
+				},
+				"description": "Create new post categories.\r\n\r\n\r\nAuthorization header is required: Token <token>"
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Post Detail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 763cb731c03689d34fdd5dfe8ed9bfce0d90921e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/posts/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"posts",
+						"2"
+					]
+				},
+				"description": "Get full detail of blog post including comments\r\n\r\n\r\nAuthorization header is required: Token <token>"
+			},
+			"response": []
+		},
+		{
+			"name": "List Post Comments",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 763cb731c03689d34fdd5dfe8ed9bfce0d90921e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/posts/2/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"posts",
+						"2",
+						"comments"
+					]
+				},
+				"description": "List all comments of given blog id.\r\n\r\n\r\nRequired:\r\n1. Blog Id in the URL\r\n2. Authorization header is required: Token <token>"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post Comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 763cb731c03689d34fdd5dfe8ed9bfce0d90921e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\" : \"This is done using postman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/posts/2/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"posts",
+						"2",
+						"comments"
+					]
+				},
+				"description": "Create a new comment for given blog.\r\n\r\n\r\nRequired:\r\n1. Blog Id in the URL\r\n2. Authorization header is required: Token <token>"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Post",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 763cb731c03689d34fdd5dfe8ed9bfce0d90921e",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/posts/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"posts",
+						"2"
+					]
+				},
+				"description": "Delete post API.\r\n\r\nRequired:\r\n1. Blog Id in the URL\r\n2. Authorization header is required: Token <token>"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
